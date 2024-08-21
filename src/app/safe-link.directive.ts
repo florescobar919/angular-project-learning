@@ -17,6 +17,8 @@ export class SafeLinkDirective {
   oncConfirmLeavePage(event: MouseEvent) {
     const wantsToLeave = window.confirm('Do you want to leave the app ?');
     if(wantsToLeave) {
+      const address = (event.target as HTMLAnchorElement).href;
+      (event.target as HTMLAnchorElement).href = address + '?from=myapp';
       return;
     }
     event?.preventDefault();
